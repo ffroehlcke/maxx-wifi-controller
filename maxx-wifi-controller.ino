@@ -14,8 +14,6 @@ const char* WiFi_Hostename = "maxxwifi";
 const char* AP_WiFi_SSID = "Maxx-Wifi-Controller";
 const char* AP_WiFi_Password = "12345678";
 
-AsyncWebServer server(80);
-
 bool Load_WiFi_SSID_From_Eeprom(void);
 bool Load_WiFi_Password_From_Eeprom(void);
 
@@ -26,6 +24,7 @@ String WiFi_Stored_Password = "";
 String WiFi_List[50];
 String WiFi_Ip_Adresse;
 
+AsyncWebServer server(80);
 
 void setup()
 {
