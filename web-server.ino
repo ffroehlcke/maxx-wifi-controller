@@ -41,8 +41,13 @@ void setup_webserver()
     request->send(404, "text/html", "Not found");
   }); 
 
-    server.begin();
-    Serial.println("HTTP Server Started");
+  if (!MDNS.begin(WiFi_Hostname)) {
+    Serial.println("Error setting up MDNS responder!");
+  }
+
+  server.begin();
+  Serial.println("HTTP server started");
+
 }
 
 void Handle_Http_Save_WiFi(String qsid, String qpass) 
@@ -63,10 +68,6 @@ void HttpFanHandler(String action, String value) {
     {
         IR_Send_Fan_Off(); 
     }
-    else if(action == "power" && value == "offfinal")
-    {
-        IR_Send_Fan_Off_Final(); 
-    }
     else if(action == "window" && value == "open")
     {
         IR_Send_Fan_Open();    
@@ -81,7 +82,7 @@ void HttpFanHandler(String action, String value) {
     }
     else if(action == "air" && value == "out")
     {
-        IR_Send_Fan_Air_OutIn(); 
+        IR_Send_Fan_Air_InOut(); 
     }
     else if(action == "automode" && value == "on")
     {
@@ -103,27 +104,27 @@ void HttpFanHandler(String action, String value) {
     {
         IR_Send_Fan_Speed_30(); 
     }
-    else if(action == "speed" && value == "30")
+    else if(action == "speed" && value == "40")
     {
         IR_Send_Fan_Speed_40(); 
     }
-    else if(action == "speed" && value == "40")
+    else if(action == "speed" && value == "50")
     {
         IR_Send_Fan_Speed_50(); 
     }
-    else if(action == "speed" && value == "50")
+    else if(action == "speed" && value == "60")
     {
         IR_Send_Fan_Speed_60(); 
     }
-    else if(action == "speed" && value == "60")
+    else if(action == "speed" && value == "70")
     {
         IR_Send_Fan_Speed_70(); 
     }
-    else if(action == "speed" && value == "70")
+    else if(action == "speed" && value == "80")
     {
         IR_Send_Fan_Speed_80(); 
     }
-    else if(action == "speed" && value == "80")
+    else if(action == "speed" && value == "90")
     {
         IR_Send_Fan_Speed_90(); 
     }
@@ -135,7 +136,7 @@ void HttpFanHandler(String action, String value) {
     {
         IR_Send_Fan_Open_50(); 
     }
-    else if(action == "window0" && value == "60")
+    else if(action == "window" && value == "60")
     {
         IR_Send_Fan_Open_60(); 
     }
@@ -208,9 +209,8 @@ String SendHTML(){
 
   ptr +="<br><p><a href=\"/fan/power/on\">Einschalten</a>\n";
   ptr +="<br><p><a href=\"/fan/power/off\">Ausschalten</a>\n";
-  ptr +="<br><p><a href=\"/fan/power/offfinal\">Ausschalten-final</a>\n";
   ptr +="<br><p><a href=\"/fan/window/open\">Fenster öffnen</a>\n";
-  ptr +="<br><p><a href=\"/fan/window/clode\">Fenster schließen</a>\n";
+  ptr +="<br><p><a href=\"/fan/window/close\">Fenster schließen</a>\n";
   ptr +="<br><p><a href=\"/fan/air/in\">Luft rein</a>\n";
   ptr +="<br><p><a href=\"/fan/air/out\">Luft raus</a>\n";
   ptr +="<br><p><a href=\"/fan/automode/on\">Automode: on</a>\n";

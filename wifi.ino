@@ -6,11 +6,10 @@ void setup_wifi()
 
   if(WiFi_Stored_SSID != "0")
   {
-    Serial.printf("Trying to connect to %s \n", WiFi_Stored_SSID);
-    Serial.printf("Password %s \n", WiFi_Stored_Password);
+    Serial.printf("Trying to connect to %s \n", WiFi_Stored_SSID.c_str());
 
     WiFi.mode(WIFI_STA);
-    WiFi.hostname(WiFi_Hostename);
+    WiFi.setHostname(WiFi_Hostname);
     WiFi.begin(WiFi_Stored_SSID, WiFi_Stored_Password);
 
     int i = 0;
@@ -29,7 +28,7 @@ void setup_wifi()
     WiFi_Status_Up = true;
 
     Serial.print("\nConnected to WiFi-Network: ");
-    Serial.println(WiFi_Stored_SSID);
+    Serial.println(WiFi_Stored_SSID.c_str());
     Serial.print("Local ESP32 IP: ");
     Serial.println(WiFi.localIP());
     WiFi_Ip_Adresse = WiFi.localIP().toString();
@@ -45,10 +44,10 @@ void setup_wifi()
     }
 
     WiFi.mode(WIFI_AP); 
-    WiFi.hostname(WiFi_Hostename);
+    WiFi.setHostname(WiFi_Hostname);
     WiFi.softAP(AP_WiFi_SSID, AP_WiFi_Password);
     Serial.printf("\nOnline - SSID %s AP with IP address %s\r\n", AP_WiFi_SSID, WiFi.softAPIP().toString().c_str());
     WiFi_Ip_Adresse = WiFi.softAPIP().toString();
     
-  }
+  }  
 }

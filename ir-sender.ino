@@ -253,12 +253,13 @@ void IR_Send_Fan_Open()
   pulseIR(880);
   delayMicroseconds(800);
   pulseIR(1720);
+
   Serial.println("Send IR: Fan Open");
 }
 
 void IR_Send_Fan_Close()
 {
-  pulseIR(1740);
+    pulseIR(1740);
   delayMicroseconds(820);
   pulseIR(840);
   delayMicroseconds(1660);
@@ -1549,7 +1550,7 @@ void IR_Send_Fan_Open_50()
 
 void IR_Send_Fan_Open_60()
 {
-    pulseIR(1720);
+  pulseIR(1720);
   delayMicroseconds(840);
   pulseIR(860);
   delayMicroseconds(1680);
@@ -1869,44 +1870,4 @@ void IR_Send_Fan_Open_90()
   delayMicroseconds(3380);
   pulseIR(840); 
   Serial.println("Send IR: Fan Open 90 degrees");
-}
-
-void IR_Send_Fan_Off_Final()
-{
-    pulseIR(1620);
-  delayMicroseconds(860);
-  pulseIR(820);
-  delayMicroseconds(1760);
-  pulseIR(740);
-  delayMicroseconds(1040);
-  pulseIR(660);
-  delayMicroseconds(1740);
-  pulseIR(740);
-  delayMicroseconds(1000);
-  pulseIR(240);
-  delayMicroseconds(140);
-  pulseIR(380);
-  delayMicroseconds(960);
-  pulseIR(1480);
-  delayMicroseconds(5860);
-  pulseIR(460);
-  delayMicroseconds(140);
-  pulseIR(400);
-  delayMicroseconds(2040);
-  pulseIR(280);
-  delayMicroseconds(1220);
-  pulseIR(300);
-  delayMicroseconds(140);
-  pulseIR(240);
-  delayMicroseconds(3080);
-  pulseIR(200);
-  delayMicroseconds(6640);
-  pulseIR(200);
-  delayMicroseconds(2120);
-  pulseIR(240);
-  delayMicroseconds(140);
-  pulseIR(300);
-  delayMicroseconds(140);
-  pulseIR(260);  
-  Serial.println("Send IR: Fan final off");
 }
