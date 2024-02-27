@@ -7,7 +7,7 @@ Mit diesem Projekt könnt Ihr euch eine IR-Steuerung für den beliebten Camper-V
 
 ### Aufbau
 
-Verbindet die LED mit GRND und dem Port D1 (Bild folgt). Übertragt den Code auf den Mikrocontroller.
+Verbindet die LED mit GND und D1 (Bild folgt). Übertragt den Code auf den Mikrocontroller.
 
 ### WLAN
 
