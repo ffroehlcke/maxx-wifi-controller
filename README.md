@@ -17,7 +17,10 @@ const char* WiFi_Hostname = "maxxwifi";
 const char* WiFi_AP_SSID = "Maxx-Wifi-Controller";
 const char* WiFi_AP_Password = "12345678";
 ```
-Verbindet euch mit diesem WLAN und ruft das Web-Interface über http://maxxwifi.local oder http://192.167.4.1 auf. 
+Verbindet euch mit diesem WLAN und ruft das Web-Interface über 
+* http://maxxwifi.local oder
+* http://192.167.4.1 auf. 
+
 Auf dieser Seite könnt ihr nun euren Ventilator steuern oder den Kontroller mit einem vorhandenen WLAN verbinden. Wählt dazu das gewünschte Netzwerk aus und gebt den Schlüssel ein. Die Zugangsdaten werden auf dem Chip gespeichert. 
 
 ### API
