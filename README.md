@@ -1,6 +1,6 @@
 # Maxx-Wifi-Controller 👋
 
-Mit diesem Projekt könnt Ihr euch eine IR-Steuerung für den MaxxFan bauen. Der Code ist getestet auf einem [ESP8266](https://github.com/esp8266/Arduino)- und einem 
+Mit diesem Projekt könnt Ihr euch eine IR-Steuerung für den beliebten Camper-Ventilator bauen. Der Code ist getestet auf einem [ESP8266](https://github.com/esp8266/Arduino)- und einem 
 [ESP32](https://github.com/espressif/arduino-esp32)-Mikrocontroller. Ihr braucht nur den Chip und eine IR-LED. Der Kontroller kann entweder im WLAN-Access-Point Modus betrieben werden oder mit einem vorhandnen WLAN verbunden werden.  
 
 ![IMG_3854](https://github.com/ffroehlcke/maxx-wifi-controller/assets/4354298/adae7102-da4f-48e2-af4c-0dd7b278ad98)
