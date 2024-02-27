@@ -3,7 +3,7 @@ void pulseIR(long microsecs)
     cli();  // this turns off any background interrupts
 
     while (microsecs > 0) {
-      // 38 kHz is about 13 microseconds high and 13 microseconds low
+        // 38 kHz is about 13 microseconds high and 13 microseconds low
         digitalWrite(IRledPin, HIGH);  // this takes about 3 microseconds to happen
         delayMicroseconds(10);         // hang out for 10 microseconds
         digitalWrite(IRledPin, LOW);   // this also takes about 3 microseconds
@@ -732,7 +732,7 @@ void IR_Send_Fan_Speed_10()
   pulseIR(1760);
   delayMicroseconds(780);
   pulseIR(1740);
-  Serial.println("Send IR: Fan Speed %");
+  Serial.println("Send IR: Fan Speed 10 %");
 }
 
 void IR_Send_Fan_Speed_20()
@@ -1215,7 +1215,7 @@ void IR_Send_Fan_Speed_70()
   pulseIR(1740);
   delayMicroseconds(800);
   pulseIR(880);  
-  Serial.println("Send IR: Fan Speed 70%");
+  Serial.println("Send IR: Fan Speed 70 %");
 }
 
 void IR_Send_Fan_Speed_80()

@@ -24,12 +24,13 @@ void setup_wifi()
   }
   
 
-  if(WiFi.status() == WL_CONNECTED){
+  if(WiFi.status() == WL_CONNECTED)
+  {
     WiFi_Status_Up = true;
 
     Serial.print("\nConnected to WiFi-Network: ");
     Serial.println(WiFi_Stored_SSID.c_str());
-    Serial.print("Local ESP32 IP: ");
+    Serial.print("Local ESP IP: ");
     Serial.println(WiFi.localIP());
     WiFi_Ip_Adresse = WiFi.localIP().toString();
   
@@ -45,9 +46,8 @@ void setup_wifi()
 
     WiFi.mode(WIFI_AP); 
     WiFi.setHostname(WiFi_Hostname);
-    WiFi.softAP(AP_WiFi_SSID, AP_WiFi_Password);
-    Serial.printf("\nOnline - SSID %s AP with IP address %s\r\n", AP_WiFi_SSID, WiFi.softAPIP().toString().c_str());
+    WiFi.softAP(WiFi_AP_SSID, WiFi_AP_Password);
+    Serial.printf("\nOnline - SSID %s AP with IP address %s\r\n", WiFi_AP_SSID, WiFi.softAPIP().toString().c_str());
     WiFi_Ip_Adresse = WiFi.softAPIP().toString();
-    
   }  
 }

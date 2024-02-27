@@ -10,18 +10,19 @@
 
 #include <EEPROM.h>
 
-// Feste Werte
+// Fixed Values
 int IRledPin = 5; //D1 Port
 
 const char* WiFi_Hostname = "maxxwifi";
-const char* AP_WiFi_SSID = "Maxx-Wifi-Controller";
-const char* AP_WiFi_Password = "12345678";
+const char* WiFi_AP_SSID = "Maxx-Wifi-Controller";
+const char* WiFi_AP_Password = "12345678";
 
 bool Load_WiFi_SSID_From_Eeprom(void);
 bool Load_WiFi_Password_From_Eeprom(void);
 
-boolean WiFi_Status_Up = false;
 boolean requestReboot = false;
+
+boolean WiFi_Status_Up = false;
 String WiFi_Stored_SSID;
 String WiFi_Stored_Password = "";
 String WiFi_List[50];
@@ -48,8 +49,8 @@ void setup()
 void loop()
 {
   if (requestReboot) {
-    Serial.println("Rebooting in 2 seconds...");
-    delay(1000);
+    Serial.println("Restart Maxx-Wifi-Controller...");
+    delay(500);
     server.reset();
     ESP.restart();
   }
