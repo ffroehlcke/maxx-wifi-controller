@@ -183,7 +183,7 @@ String SendHTML(){
   ptr += "</style>\n";
   ptr += "</head>\n";
   ptr += "<body>\n";
-  ptr += "<h1>MaxxFan Wifi Controller</h1>\n";
+  ptr += "<h1>Maxx Wifi Controller</h1>\n";
 
   if(!WiFi_Status_Up){
     ptr += "<p><strong>Access Point(AP) Mode</strong></p>\n";  
@@ -286,7 +286,7 @@ String SendRebootHTML(String nextPage){
   ptr += "</style>\n";
   ptr += "</head>\n";
   ptr += "<body>\n";
-  ptr += "<h1>MaxxFan Wifi Controller</h1>\n";
+  ptr += "<h1>Maxx Wifi Controller</h1>\n";
   ptr += "<p>Rebooting - Give me 5 seconds...</p>\n";
   ptr += "<div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>\n";
   ptr += "<script> window.setTimeout(\"location.href='";
