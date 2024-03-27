@@ -9,6 +9,21 @@ Mit diesem Projekt könnt Ihr euch eine IR-Steuerung für den beliebten Camper-V
 
 Verbindet die LED mit GND und D1 (Bild folgt). Übertragt den Code auf den Mikrocontroller.
 
+### Regex Unterstützung aktivieren
+
+Damit euer Compiler Regex unterstützt, müsst ihr ein Flag setzen:
+
+Arduino IDE: create/update platform.local.txt
+Windows: C:\Users\(username)\AppData\Local\Arduino15\packages\espxxxx\hardware\espxxxx\{version}\platform.local.txt
+Linux: ~/.arduino15/packages/espxxxx/hardware/espxxxx/{version}/platform.local.txt
+
+compiler.cpp.extra_flags=-DASYNCWEBSERVER_REGEX=1
+
+platformio: platformio.ini:
+ build_flags = 
+      -DASYNCWEBSERVER_REGEX
+
+
 ### WLAN
 
 Nach dem Einschalten startet der Kontroller einen Access-Point mit der SSID *Maxx-Wifi-Controller* und den Passwort *12345678*. Diese Werte können om Code geändert werden: 
