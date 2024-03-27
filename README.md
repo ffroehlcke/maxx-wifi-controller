@@ -7,7 +7,10 @@ Mit diesem Projekt könnt Ihr euch eine IR-Steuerung für den beliebten Camper-V
 
 ### Aufbau
 
-Verbindet die LED mit GND und D1 (Bild folgt). Übertragt den Code auf den Mikrocontroller.
+Verbindet die LED mit GND und D1. Übertragt den Code auf den Mikrocontroller.
+
+![image](https://github.com/ffroehlcke/maxx-wifi-controller/assets/4354298/e1fc1cb2-8f2c-41b3-bb18-89d5cf6f2095)
+
 
 ### Regex Unterstützung aktivieren
 
