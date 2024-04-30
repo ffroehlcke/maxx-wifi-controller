@@ -24,7 +24,7 @@ void setup_webserver()
   });
 
   //RegEx: https://github.com/me-no-dev/ESPAsyncWebServer/blob/master/examples/regex_patterns/regex_patterns.ino
-  server.on("^\\/fan\\/([a-z0-9]+)\\/([a-z0-9]+)$", HTTP_GET, [] (AsyncWebServerRequest *request) {
+  server.on("^\\/fan\\/([a-zA-Z0-9]+)\\/([a-z0-9]+)$", HTTP_GET, [] (AsyncWebServerRequest *request) {
       String action = request->pathArg(0);
       String value = request->pathArg(1);
       HttpFanHandler(action, value); 
@@ -76,14 +76,6 @@ void HttpFanHandler(String action, String value) {
     {
         IR_Send_Fan_Close(); 
     }
-    else if(action == "air" && value == "in")
-    {
-        IR_Send_Fan_Air_OutIn(); 
-    }
-    else if(action == "air" && value == "out")
-    {
-        IR_Send_Fan_Air_InOut(); 
-    }
     else if(action == "automode" && value == "on")
     {
         IR_Send_Fan_Automode_On(); 
@@ -92,45 +84,89 @@ void HttpFanHandler(String action, String value) {
     {
         IR_Send_Fan_Automode_Off(); 
     }
-    else if(action == "speed" && value == "10")
+    else if(action == "speed" && value == "0")
     {
-        IR_Send_Fan_Speed_10(); 
+        IR_Send_Fan_Speed_0(); 
     }
-    else if(action == "speed" && value == "20")
+    else if(action == "speedOut" && value == "10")
     {
-        IR_Send_Fan_Speed_20(); 
+        IR_Send_Fan_Speed_Out_10(); 
     }
-    else if(action == "speed" && value == "30")
+    else if(action == "speedOut" && value == "20")
     {
-        IR_Send_Fan_Speed_30(); 
+        IR_Send_Fan_Speed_Out_20(); 
     }
-    else if(action == "speed" && value == "40")
+    else if(action == "speedOut" && value == "30")
     {
-        IR_Send_Fan_Speed_40(); 
+        IR_Send_Fan_Speed_Out_30(); 
     }
-    else if(action == "speed" && value == "50")
+    else if(action == "speedOut" && value == "40")
     {
-        IR_Send_Fan_Speed_50(); 
+        IR_Send_Fan_Speed_Out_40(); 
     }
-    else if(action == "speed" && value == "60")
+    else if(action == "speedOut" && value == "50")
     {
-        IR_Send_Fan_Speed_60(); 
+        IR_Send_Fan_Speed_Out_50(); 
     }
-    else if(action == "speed" && value == "70")
+    else if(action == "speedOut" && value == "60")
     {
-        IR_Send_Fan_Speed_70(); 
+        IR_Send_Fan_Speed_Out_60(); 
     }
-    else if(action == "speed" && value == "80")
+    else if(action == "speedOut" && value == "70")
     {
-        IR_Send_Fan_Speed_80(); 
+        IR_Send_Fan_Speed_Out_70(); 
     }
-    else if(action == "speed" && value == "90")
+    else if(action == "speedOut" && value == "80")
     {
-        IR_Send_Fan_Speed_90(); 
+        IR_Send_Fan_Speed_Out_80(); 
     }
-    else if(action == "speed" && value == "100")
+    else if(action == "speedOut" && value == "90")
     {
-        IR_Send_Fan_Speed_100(); 
+        IR_Send_Fan_Speed_Out_90(); 
+    }
+    else if(action == "speedOut" && value == "100")
+    {
+        IR_Send_Fan_Speed_Out_100(); 
+    }
+    else if(action == "speedIn" && value == "10")
+    {
+        IR_Send_Fan_Speed_In_10(); 
+    }
+    else if(action == "speedIn" && value == "20")
+    {
+        IR_Send_Fan_Speed_In_20(); 
+    }
+    else if(action == "speedIn" && value == "30")
+    {
+        IR_Send_Fan_Speed_In_30(); 
+    }
+    else if(action == "speedIn" && value == "40")
+    {
+        IR_Send_Fan_Speed_In_40(); 
+    }
+    else if(action == "speedIn" && value == "50")
+    {
+        IR_Send_Fan_Speed_In_50(); 
+    }
+    else if(action == "speedIn" && value == "60")
+    {
+        IR_Send_Fan_Speed_In_60(); 
+    }
+    else if(action == "speedIn" && value == "70")
+    {
+        IR_Send_Fan_Speed_In_70(); 
+    }
+    else if(action == "speedIn" && value == "80")
+    {
+        IR_Send_Fan_Speed_In_80(); 
+    }
+    else if(action == "speedIn" && value == "90")
+    {
+        IR_Send_Fan_Speed_In_90(); 
+    }
+    else if(action == "speedIn" && value == "100")
+    {
+        IR_Send_Fan_Speed_In_100(); 
     }
     else if(action == "window" && value == "50")
     {
@@ -206,17 +242,30 @@ String SendHTML(){
   ptr +="</tr></table>\n";
   ptr += "<p>Set Fan speed</p>\n";
   ptr += "<table><tr>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/10\" class=\"button speed\">10</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/20\" class=\"button speed\">20</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/30\" class=\"button speed\">30</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/40\" class=\"button speed\">40</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/50\" class=\"button speed\">50</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/0\" class=\"button speed\">0</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/10\" class=\"button speed\">in 10</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/20\" class=\"button speed\">in 20</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/30\" class=\"button speed\">in 30</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/40\" class=\"button speed\">in 40</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/50\" class=\"button speed\">in 50</a></td>";
   ptr += "</tr><tr>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/60\" class=\"button speed\">60</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/70\" class=\"button speed\">70</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/80\" class=\"button speed\">80</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/90\" class=\"button speed\">90</a></td>";
-  ptr += "<td class=\"td-20\"><a href=\"/fan/speed/100\" class=\"button speed\">100</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/60\" class=\"button speed\">in 60</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/70\" class=\"button speed\">in 70</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/80\" class=\"button speed\">in 80</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/90\" class=\"button speed\">in 90</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedIn/100\" class=\"button speed\">in 100</a></td>";
+  ptr += "</tr><tr>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/10\" class=\"button speed\">out 10</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/20\" class=\"button speed\">out 20</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/30\" class=\"button speed\">out 30</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/40\" class=\"button speed\">out 40</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/50\" class=\"button speed\">out 50</a></td>";
+  ptr += "</tr><tr>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/60\" class=\"button speed\">out 60</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/70\" class=\"button speed\">out 70</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/80\" class=\"button speed\">out 80</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/90\" class=\"button speed\">out 90</a></td>";
+  ptr += "<td class=\"td-20\"><a href=\"/fan/speedOut/100\" class=\"button speed\">out 100</a></td>";
   ptr += "</tr></table>\n";
 
   ptr += "<hr>\n";
